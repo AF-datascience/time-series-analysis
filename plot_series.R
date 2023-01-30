@@ -3,6 +3,10 @@ library(dplyr)
 library(fpp3)
 library(tsibble)
 
+# measure is the numbers 
+# index is when that measure was recordered 
+# we can se tthe index outselves to any column! 
+
 tibble(month = c('2019 Jan', 
                  '2019 Feb',
                  '2019 Mar',
@@ -14,6 +18,14 @@ mutate(Month = yearmonth(month)) %>%
 
 # the time plot a quick check into how it's looking: 
 # observations plotting against the time of the observation with consecutive obvs joined by straight lintres! 
+
+# tsibble allows multiple time series to be stored in a single object - dataframe 
+# key structure tells you how many seperate time series there are in the tibble! 
+
+olympic_running %>% 
+distinct(Sex)
+
+# here there are 14 different keys = 14 difrferent time series found within the data, the index is till 1M so 1 month! 
 
 ansett %>% 
   filter(Airports == "MEL-SYD", Class == "Economy") %>%  
