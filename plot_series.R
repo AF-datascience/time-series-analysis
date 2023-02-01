@@ -34,3 +34,18 @@ ansett %>%
   labs(title = "Ecopnomy class", 
        subtitle = "MEL to SYD", 
        y = "Passengers (in 1000's)")
+
+# time series plot of medicine! 
+a10 <- PBS %>%
+  filter(ATC2 == "A10") %>%
+  select(Month, Concession, Type, Cost) %>%
+  summarise(TotalC = sum(Cost)) %>%
+  mutate(Cost = TotalC / 1e6) 
+
+a10
+# no keys set, but index is 1 month! 
+
+autoplot(a10, Cost)
+
+a10 %>% 
+  gg_season(Cost, labels = "both")
