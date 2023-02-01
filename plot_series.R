@@ -47,5 +47,13 @@ a10
 
 autoplot(a10, Cost)
 
+# season plot - like a timeplot but over the individual seasons - basically the individual indexs really that make the time series up! 
 a10 %>% 
   gg_season(Cost, labels = "both")
+
+# e.g. march 2008 has values that decreased which is not usual! 
+vic_elec %>% 
+  gg_season(Demand, labels = "both", period = "month")
+
+
+# seasonal subseries plots
